@@ -34,18 +34,19 @@ AppAsset::register($this);
             ]);
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-            } else {
+            } else { 
+                $menuItems[] = ['label' => 'News list', 'url' => ['/news/index']];
+                $menuItems[] = ['label' => 'Create New', 'url' => ['/news/create']];
                 $menuItems[] = [
                     'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ];
+                
             }
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
